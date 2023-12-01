@@ -1,0 +1,12 @@
+import { Component , OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{
+  title = 'Client';
+  faCartShopping = faCartShopping;
+}
