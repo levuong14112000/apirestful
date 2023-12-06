@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 
 
 
@@ -8,10 +10,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    PaginationModule.forRoot()
   ],
   exports :[
-    FontAwesomeModule
+    FontAwesomeModule,
+    PaginationModule
   ]
   
 })

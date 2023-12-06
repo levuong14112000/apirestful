@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShopModule } from './shop/shop.module';
 import { SharedModule } from './shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HttpClientModule,
     ShopModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

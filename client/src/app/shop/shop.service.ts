@@ -13,11 +13,18 @@ export class ShopService {
   baseUrl = "http://localhost:8080/api/";
   constructor(private http : HttpClient) {
     }
-   getProducts(typeId?:number) : Observable<IPagination | null> {
+   getProducts(sortString :string, pageNumber: number, pageSize:number,typeId?:number,brandId?:number) : Observable<IPagination | null> {
     let params = new HttpParams();
     if (typeId) {
       params = params.append('typeId',typeId.toString());
     }
+    if (brandId) {
+      params = params.append('brandId',brandId.toString());
+    }
+      params = params.append('sort',sortString.toString());
+      params = params.append('pageNumber',pageNumber.toString());
+      params = params.append('pageSize',pageSize.toString());
+    
     return  this.http.get<IPagination>(this.baseUrl + 'products?pageSize=6',{params});
    }
    getBrands() {

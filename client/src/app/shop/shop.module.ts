@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShopComponent } from './shop.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared/shared.module';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 
@@ -11,11 +13,12 @@ import { ProductItemComponent } from './product-item/product-item.component';
   declarations: [
     ShopComponent,
     ProductItemComponent
+    
   ],
   // import thư viện
   imports: [
     CommonModule,
-    FontAwesomeModule
+    SharedModule
 
   ],
   // xuất thư viện
