@@ -7,8 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShopModule } from './shop/shop.module';
 import { SharedModule } from './shared/shared.module';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +19,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    ShopModule,
     FontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
