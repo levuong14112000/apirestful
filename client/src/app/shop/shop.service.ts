@@ -36,5 +36,8 @@ export class ShopService {
    getTypes(){
     return this.http.get<Types[]>(this.baseUrl + 'products/types')
    }
+   getProductById(id :number) : Observable<IProduct>{
+    return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
+   }
   
 }

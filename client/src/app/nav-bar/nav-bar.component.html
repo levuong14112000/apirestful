@@ -4,10 +4,10 @@
     </a>
 
     <nav class="d-flex flex-grow-1 justify-content-center" style="font-size: larger">
-      <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="/home">Home</a>
-      <a class="me-3 py-2 link-body-emphasis text-decoration-none" routerLink="/">Shop</a>
-      <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Contact</a>
-      <a class="py-2 link-body-emphasis text-decoration-none" href="#">Support !</a>
+      <a  class="me-3 py-2 text-decoration-none" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home</a>
+      <a class="me-3 py-2 text-decoration-none" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Shop</a>
+      <a class="me-3 py-2 text-decoration-none" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Contact</a>
+      <a class="py-2 text-decoration-none" routerLink="/test-error" routerLinkActive="active"  [routerLinkActiveOptions]="{exact : true}">Support !</a>
     </nav>
     <div class="d-flex align-items-center">
         <a href="" style="position: relative;" class="mx-5 text-decoration-none">

@@ -1,1 +1,23 @@
-<p>product-detail works!</p>
+<div class="row">
+    <div class="col-3">
+    <img src="{{product?.pictureUrl}}" alt="noImg" class="w-100 img-fluid">
+    </div>
+    <div class="col-9 align-items-center ">
+    <h1 class="card-header-pills ">{{product?.name}}</h1>
+    <h5 class="card-text ">{{product?.productBrand}} </h5>
+    <h5 class="card-text ">{{product?.productType}} </h5>
+    <h5 class="card-text " style="opacity: 0.8;">{{product?.price| currency}} </h5>
+    <div class="d-flex  justify-content-start  align-items-center ">
+        <span class="fw-bold mx-2">
+            <fa-icon [icon]="faPlusCircle" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
+            2
+            <fa-icon [icon]="faMinusCircle" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
+        </span>
+        <button class="btn btn-primary btn-lg ms-4">Update Item</button>
+    </div>
+    <div class="row mt-5">
+        <h4>Description</h4>
+        <p>{{product?.description}}</p>
+    </div>
+    </div>
+</div>
