@@ -4,6 +4,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PaginHeaderComponent } from './pagin-header/pagin-header.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -16,13 +18,21 @@ import { PaginationComponent } from './pagination/pagination.component';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    PaginationModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass : 'toast-top-right',
+      tapToDismiss : true,
+      preventDuplicates : true
+
+    }), // ToastrModule added
+    PaginationModule.forRoot(),
+   
   ],
   exports :[
     FontAwesomeModule,
     PaginationModule,
     PaginHeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    ToastrModule
   ]
   
 })

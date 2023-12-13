@@ -29,7 +29,8 @@ namespace api.Controllers
         [HttpGet]
         public ActionResult<PageList<Product>> GetProducts(
                     [FromQuery]ProductRequestParams productRequestParams,
-                    [FromQuery]PaginationParams pagination)
+                    [FromQuery]PaginationParams pagination
+                    )
         {
             Func<IQueryable<Product>, IOrderedQueryable<Product>> sortedQuery;
 
