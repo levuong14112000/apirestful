@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorInterceptor } from './middleware/error.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './middleware/loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   providers: [
     // handle error
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor , multi : true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor , multi : true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor , multi : true}
+
   ],
   bootstrap: [AppComponent]
 })

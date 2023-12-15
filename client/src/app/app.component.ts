@@ -9,14 +9,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 
 //implement OnInit tu dong chay k can goi
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'Client';
   faCartShopping = faCartShopping;
-  constructor(private spinnerSevice : NgxSpinnerService){}
-  ngOnInit(): void {
-    this.spinnerSevice.show();
-    setTimeout(()=>{
-      this.spinnerSevice.hide();
-    },2000);
-  }
+  // constructor(private spinnerSevice : NgxSpinnerService){}
+  // ngOnInit(): void {
+  //   this.spinnerSevice.show();
+  //   setTimeout(()=>{
+  //     this.spinnerSevice.hide();
+  //   },2000);
+  // }
 }
