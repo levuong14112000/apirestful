@@ -6,7 +6,7 @@
         </a>
         <p class="mb-2">{{product?.price | currency}}</p>
         <div class="btn-group">
-            <button type="button" class="btn btn-primary w-50">
+            <button (click)="addItemToBasket()" type="button" class="btn btn-primary w-50">
                  <fa-icon [icon]="faCartShopping"></fa-icon>
             </button>
             <button routerLink="product/{{product?.id}}"  type="button" class="btn btn-primary w-50">Detail
