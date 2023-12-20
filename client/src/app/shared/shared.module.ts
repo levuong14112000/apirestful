@@ -6,6 +6,7 @@ import { PaginHeaderComponent } from './pagin-header/pagin-header.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { OrderTotalsComponent } from './order-totals/order-totals.component';
 
 
 
@@ -13,7 +14,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     PaginHeaderComponent,
-    PaginationComponent
+    PaginationComponent,
+    OrderTotalsComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PaginationModule,
     PaginHeaderComponent,
     PaginationComponent,
-    ToastrModule
+    ToastrModule,
+    OrderTotalsComponent
   ]
   
 })

@@ -6,7 +6,7 @@
     <nav class="d-flex flex-grow-1 justify-content-center" style="font-size: larger">
       <a  class="me-3 py-2 text-decoration-none" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home</a>
       <a class="me-3 py-2 text-decoration-none" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Shop</a>
-      <a class="me-3 py-2 text-decoration-none" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Contact</a>
+      <a class="me-3 py-2 text-decoration-none" routerLinkActive="actve" [routerLinkActiveOptions]="{exact : true}">Contact</a>
       <a class="py-2 text-decoration-none" routerLink="/test-error" routerLinkActive="active"  [routerLinkActiveOptions]="{exact : true}">Support !</a>
     </nav>
     <div class="d-flex align-items-center">
@@ -20,9 +20,10 @@
             border-radius: 50%;
             min-width: 25px;
             min-height: 25px;
-            text-align: center;" class="card-no">5</div>
+            text-align: center;" class="card-no" *ngIf="(this.basketService.basket)">
+            {{this.basketService.basket.items.length}}</div>
         </a>
-        <a href="" class="btn btn-primary me-3">Login</a>
+i        <a href="" class="btn btn-primary me-3">Login</a>
         <a href="" class="btn btn-primary me-3">Sign Up</a>
     
     </div>

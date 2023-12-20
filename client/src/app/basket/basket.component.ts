@@ -1,25 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { IBasket, IBasketItem } from '../models/basket';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { enviroment } from 'src/environments/enviroment';
+import { Component } from '@angular/core';
 import { BasketService } from './basket.service';
+import { faMinusCircle, faPlusCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit {
-  baseUrl = enviroment.apiUrl + "basket";
-  constructor(private http : HttpClient ,private basketService : BasketService) {
+export class BasketComponent {
+  faPlusCircle = faPlusCircle; faMinusCircle = faMinusCircle; faTrash= faTrash;
+ constructor(public basketService : BasketService) {
    
-    
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   
-
+ }
 }

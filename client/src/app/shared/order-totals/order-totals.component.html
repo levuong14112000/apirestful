@@ -1,0 +1,20 @@
+<div class="bg-light ox-4 py-3 text-uppercase fw-bold">
+    Order Summary
+</div>
+<div class="p4">
+    <p class="font-italic mb-4">Shipping Cost : ...</p>
+    <ul class="list-unstyled mb-4">
+        <li class="d-flex justifi-content-between py-3 border-bottom">
+            <strong class="text-muted">Order subtotal</strong>
+            <strong>{{this.basketService.basketTotal.subtotal | currency}}</strong>
+        </li>
+        <li class="d-flex justifi-content-between py-3 border-bottom">
+            <strong class="text-muted">Shipping Cost</strong>
+            <strong>{{this.basketService.basketTotal.shipping| currency}}</strong>
+        </li>
+        <li class="d-flex justifi-content-between py-3 border-bottom">
+            <strong class="text-muted">Total</strong>
+            <strong>{{this.basketService.basketTotal.total| currency}}</strong>
+        </li>
+    </ul>
+</div>

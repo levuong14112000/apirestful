@@ -14,7 +14,7 @@ import { BasketRoute } from './basket.routing';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(BasketRoute) // import Basket Route
+    RouterModule.forChild(BasketRoute),
   ]
 })
 export class BasketModule { }

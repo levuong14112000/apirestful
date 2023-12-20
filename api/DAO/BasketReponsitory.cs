@@ -12,10 +12,12 @@ namespace api.DAO
     {
         private readonly IDatabase _database;
         private readonly IUnitOfWork _unitOfWork;
-        public BasketReponsitory(IConnectionMultiplexer redis ,IUnitOfWork unitOfWork )
+        private IConfiguration _config;
+        public BasketReponsitory(IConfiguration config,IConnectionMultiplexer redis ,IUnitOfWork unitOfWork )
         {
             _database = redis.GetDatabase();
             _unitOfWork = unitOfWork;
+            _config = config;
         }
         public async Task<bool> DeleteBasketAsync(string basketId)
         {
@@ -46,7 +48,7 @@ namespace api.DAO
                     ProductName = product.Name,
                     Price = product.Price,
                     Quantity = item.Quantity,
-                    PictureUrl = product.PictureUrl,
+                    PictureUrl = _config["ApiUrl"] + product.PictureUrl,
                     Brand = product.ProductBrand.Name,
                     Type = product.ProductType.Name  
                 };
