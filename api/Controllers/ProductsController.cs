@@ -19,11 +19,15 @@ namespace api.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProductsController(IUnitOfWork unitOfWork, IMapper mapper)
+
+        public ProductsController(IUnitOfWork unitOfWork, IMapper mapper ,IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _hostEnvironment = hostEnvironment;
+       
         }
 
         [HttpGet]
@@ -85,8 +89,6 @@ namespace api.Controllers
             //     ProductType = item.ProductType.Name
             // }).ToList());
         }
-
-
         [HttpGet("{id}")]
         public async Task<ActionResult<ReturnProduct>> GetSingleProduct(int id) {
             var query = await _unitOfWork.ProductRepository.GetEntities(
@@ -107,7 +109,107 @@ namespace api.Controllers
             //     ProductType = product.ProductType.Name
             // });
         }
+        [HttpPost("create")]
+    public async Task<ActionResult<Product>> CreateProduct([FromForm] Product product, [FromForm] IFormFile file)
+    {  
 
+        var wwwRootPath = _hostEnvironment.WebRootPath;
+        if (file != null)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+            var productPath = Path.Combine(wwwRootPath, "images/products");
+
+            await using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            product.PictureUrl = "images/products/" + fileName;
+        }
+        else
+        {
+            product.PictureUrl = "BOOK-COMIC-1000.jpg";
+        }
+
+        _unitOfWork.ProductRepository.Add(product);
+         _unitOfWork.Save();
+
+        return CreatedAtAction("GetProducts", new { id = product.Id }, product);
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProduct(int id)
+    {
+        var product = await _unitOfWork.ProductRepository.GetEntityById(id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        // Delete image from wwwroot/image
+        if (product.PictureUrl != null && !product.Name.Contains("http"))
+        {
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", product.PictureUrl);
+            if (System.IO.File.Exists(imagePath))
+                System.IO.File.Delete(imagePath);
+        }
+
+        _unitOfWork.ProductRepository.Delete(product);
+
+        _unitOfWork.Save();
+
+        return NoContent();
+    }
+      [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProduct(int id, [FromForm] Product product, [FromForm] IFormFile file)
+    {
+        Console.WriteLine(product.Id);
+    try
+    {
+        var existingProduct = await _unitOfWork.ProductRepository.GetEntityById(id);
+        if (existingProduct == null)
+        {
+            return NotFound();
+        }
+
+        var wwwRootPath = _hostEnvironment.WebRootPath;
+
+        if (file != null)
+        {
+            if (existingProduct.PictureUrl != null && !existingProduct.PictureUrl.Contains("http"))
+            {
+                var imagePath = Path.Combine(wwwRootPath, "images", existingProduct.PictureUrl);
+                if (System.IO.File.Exists(imagePath))
+                    System.IO.File.Delete(imagePath);
+            }
+
+            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            var productPath = Path.Combine(wwwRootPath, "images");
+
+            using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            existingProduct.PictureUrl = fileName;
+        }
+
+        existingProduct.Name = product.Name;
+        existingProduct.Description = product.Description;
+        existingProduct.Price = product.Price;
+        existingProduct.PictureUrl = product.PictureUrl;
+        existingProduct.ProductTypeId = product.ProductTypeId;
+        existingProduct.ProductBrandId = product.ProductBrandId;
+
+        _unitOfWork.ProductRepository.Update(existingProduct);
+        _unitOfWork.Save();
+
+        return NoContent();
+    }
+    catch (Exception)
+    {
+        return StatusCode(500, "Internal Server Error");
+    }
+}
         [HttpGet("brands")]
         public async Task<ActionResult<List<ProductBrand>>> GetProductBrands() {
             IEnumerable<ProductBrand> productBrands = await _unitOfWork.ProductBrandRepository.GetAll();

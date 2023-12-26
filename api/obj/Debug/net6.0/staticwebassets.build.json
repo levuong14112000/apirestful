@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xRvjwRsVFr1rD2Yj2cMqdV9c9yWXbccP/q3a3MIUqso=",
+  "Hash": "VQVHmRuXGc5O9mjTzV/wYXR3Lx9R9X8ga0JDDje0UJ4=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\._images"
+    },
+    {
+      "Identity": "C:\\Users\\levuo\\OneDrive\\Máy tính\\NVM\\api\\wwwroot\\images\\products\\72188c31-ba97-4024-90e9-d9fc4d7bedb1.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\levuo\\OneDrive\\Máy tính\\NVM\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/products/72188c31-ba97-4024-90e9-d9fc4d7bedb1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\72188c31-ba97-4024-90e9-d9fc4d7bedb1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\levuo\\OneDrive\\Máy tính\\NVM\\api\\wwwroot\\images\\products\\7d04d322-c1bd-4392-8d41-cb74833892d3.jpg",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\levuo\\OneDrive\\Máy tính\\NVM\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "images/products/7d04d322-c1bd-4392-8d41-cb74833892d3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\7d04d322-c1bd-4392-8d41-cb74833892d3.jpg"
     },
     {
       "Identity": "C:\\Users\\levuo\\OneDrive\\Máy tính\\NVM\\api\\wwwroot\\images\\products\\BOOK-COMIC-1000.jpg",

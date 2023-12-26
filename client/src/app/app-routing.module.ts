@@ -5,12 +5,14 @@ const routes: Routes = [
   {path: '', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule)},
   {path: 'home', loadChildren: () => import('./home/home.module').then(mod => mod.HomeModule)},
   {path: 'basket', loadChildren: () => import('./basket/basket.module').then(mod => mod.BasketModule)},
+  {path: 'crud', loadChildren: () => import('./product-crud/product-crud.module').then(mod => mod.ProductCrudModule)},
   {path: 'test-error', loadChildren: () => import('./test-error/test-error.module').then(mod => mod.TestErrorModule)},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)]
+,
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

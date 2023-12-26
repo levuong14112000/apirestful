@@ -39,5 +39,14 @@ export class ShopService {
    getProductById(id :number) : Observable<IProduct>{
     return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
    }
+   deleteProduct(id: number) {
+    return this.http.delete(this.baseUrl + 'products/' + id);
+  }
+  createProduct(product: any) {
+    return this.http.post(this.baseUrl + 'products/create', product);
+  }
+  updateProduct(id: number, product: any) {
+    return this.http.put(this.baseUrl + 'products/' + id, product);
+  }
   
 }

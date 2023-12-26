@@ -34,7 +34,7 @@
                                     <tr *ngFor="let item of this.basketService.basket.items">
                                         <td class="row">
                                             <div class="p2 d-flex">
-                                                <img src="http://localhost:8080/{{item.pictureUrl}}" class="img-fluid" style="height: 100px; width: 75px; object-fit: cover;" alt="{{item.productName}}">
+                                                <img src="{{item.pictureUrl}}" class="img-fluid" style="height: 100px; width: 75px; object-fit: cover;" alt="{{item.productName}}">
                                                 <div class="ms-3 d-inline-block align-middle">
                                                     <h5 class="mb-0">
                                                         <a routerLink="/product/{{item.id}}" class="text-dark text-decoration-none">
@@ -52,18 +52,16 @@
                                         </td>
                                         <td class="align-middle">
                                             <div class="d-flex align-items-center">
-                                                <fa-icon [icon]="faPlusCircle" class="text-warning" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
+                                                <fa-icon [icon]="faPlusCircle" (click)="this.incrementItemQuantity(item)" class="text-warning" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
                                                 <span class="fw-bold mx-2" style="font-size: 1.5em;">{{item.quantity}}</span>
-                                                <fa-icon [icon]="faMinusCircle" class="text-warning" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
+                                                <fa-icon [icon]="faMinusCircle" (click)="this.decrementItemQuantity(item)" class="text-warning" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
                                             </div>
                                         </td>
                                         <td class="align-middle" style="font-size: 1.2em;">
                                             <strong>{{item.price * item.quantity | currency}}</strong>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="">
-                                                <fa-icon [icon]="faTrash" class="text-danger" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
-                                            </a>
+                                                <fa-icon [icon]="faTrash" (click)="this.removeItem(item)" class="text-danger" style="cursor: pointer; font-size: 1.5em;"></fa-icon>
                                         </td>
                                     </tr>
                                 </tbody>

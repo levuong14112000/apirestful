@@ -9,11 +9,11 @@
     <h5 class="card-text " style="opacity: 0.8;">{{product?.price| currency}} </h5>
     <div class="d-flex  justify-content-start  align-items-center ">
         <span class="fw-bold mx-2">
-            <fa-icon [icon]="faPlusCircle" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
-            2
-            <fa-icon [icon]="faMinusCircle" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
+            <fa-icon [icon]="faMinusCircle" (click)="this.decrementQuantity()" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
+            {{this.quantity}}
+            <fa-icon [icon]="faPlusCircle" (click)="this.incrementQuantity()" style="cursor: pointer; font-size: 1.5em;" class="text-bg-primary"></fa-icon>
         </span>
-        <button class="btn btn-primary btn-lg ms-4">Update Item</button>
+        <button (click)="this.addItemToBasket()" class="btn btn-primary btn-lg ms-4">Update Item</button>
     </div>
     <div class="row mt-5">
         <h4>Description</h4>

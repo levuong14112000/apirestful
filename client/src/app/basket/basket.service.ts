@@ -83,28 +83,33 @@ export class BasketService {
   decrementItemQuantity(item : IBasketItem){
     let bk = {...this.basket};
     let index = bk.items.findIndex(i => i.id === item.id);
-    if (bk.items[index].quantity < 1){
+    if (bk.items[index].quantity > 1){
       bk.items[index].quantity--;
     }else{
       this.removeItemFromBasket(item);
     }
     this.setBasket(bk);
   }
-  removeItemFromBasket(item : IBasketItem){
+  removeItemFromBasket(item: IBasketItem) {
     let bk = {...this.basket};
-    if(bk.items.some(x => x.id === item.id)){
+    if (bk.items.some(x => x.id === item.id)) {
       bk.items = bk.items.filter(i => i.id !== item.id);
-      if(this.basket.items.length > 0)
-      {
-        this.setBasket(this.basket);
-      }
-      else{
-        this.deleteBasket(bk);    
+      if (bk.items.length > 0) {
+        this.setBasket(bk);
+      } else {
+        this.deleteBasket(bk);
       }
     }
   }
   deleteBasket(basket : IBasket){
-
+      return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe({
+        next : ()=>{
+          this.basket = ({id: '', items: []});
+          this.basketTotal = ({shipping : 0 ,subtotal : 0 ,total : 0});
+          localStorage.removeItem('basket_id');
+        },
+        error :(err)  =>  console.log(err)
+      })
   }
 
   private calculateTotals(){

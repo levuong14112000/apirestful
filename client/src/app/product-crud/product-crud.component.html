@@ -1,0 +1,75 @@
+<div class="container-fluid ">
+    <div class="row">
+        <button routerLink="insert" type="button" class="btn btn-success me-2" style="width: 30%;">Insert</button>
+
+        <div class="d-flex justify-content-between align-items-center pb-2">
+            <app-pagin-header 
+            [pageNumber]="this.pageNumber"
+            [pageSize]="this.pageSize"
+            [totalCount]="this.totalCount"
+            ></app-pagin-header>
+
+          <div class="d-flex">
+            <input #search (keyup.enter)="onSearch()" (keyup.escape)="onReset()" style="margin-left: 20px;" type="text" class="form-control ml-2" placeholder="Search" style="width: 200px;">
+          
+          <div class="btn-group" style="margin-left: 20px;">
+            <button class="btn btn-outline-primary w-50" (click)="onSearch()">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </button>
+            <button class="btn btn-outline-primary w-50" (click)="onReset()">
+              <fa-icon [icon]="faRefresh"></fa-icon>
+            </button>
+          </div>
+          </div>
+        </div>
+        
+<table class="table">
+        <thead>
+        <tr>
+            <th  class="border-0 bg-light">
+                <div class="p-2 px-3 text-uppercase">Product</div>
+            </th>
+            <th class="border-0 bg-light">
+                <div class="p-2 px-3 text-uppercase">Name</div>
+            </th>
+            <th class="border-0 bg-light">
+                <div class="p-2 px-3 text-uppercase">Brand</div>
+            </th>
+            <th class="border-0 bg-light">
+                <div class="p-2 px-3 text-uppercase">Type</div>
+            </th>
+          
+            <th class="border-0 bg-light">
+                <div class="p-2 px-3 text-uppercase">OPTIONS</div>
+            </th>
+        </tr>
+    </thead>
+       
+        <tbody class="table-secondary">
+            <tr *ngFor="let product of productList">
+              <td>
+                <div class="img-wrapper rounded">
+                    <img src="{{product?.pictureUrl}}" alt="{{product?.name}}" 
+                    style="height: 100px; width: 100px; object-fit: cover;">
+                </div>
+              </td>
+              <td>{{product.name}}</td>
+
+            
+              <td>{{product.productBrand}}</td>
+              <td>{{product.productType}}</td>
+        
+              <td class="py-2">
+                <button routerLink="update/{{product?.id}}" type="button" class="btn btn-success me-2">Update</button>
+                <button (click)="Delete(product.id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>   
+        </tbody>
+</table>
+<app-pagination          
+[totalCount]="this.totalCount"
+[pageSize]="this.pageSize"
+(newPageNumber)="onPageChanged($event)"
+></app-pagination>
+    </div>
+</div>

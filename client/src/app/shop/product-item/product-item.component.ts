@@ -7,7 +7,7 @@ import { IProduct } from 'src/app/models/products';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.scss']
+  styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent {
   faCartShopping = faCartShopping;

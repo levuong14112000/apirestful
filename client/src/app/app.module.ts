@@ -11,11 +11,13 @@ import { SharedModule } from './shared/shared.module';
 import { ErrorInterceptor } from './middleware/error.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './middleware/loading.interceptor';
+import { ProductCrudComponent } from './product-crud/product-crud.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
+    NavBarComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { LoadingInterceptor } from './middleware/loading.interceptor';
     HttpClientModule,
     SharedModule,
     NgxSpinnerModule,
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

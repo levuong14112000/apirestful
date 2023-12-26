@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ShopService } from '../shop.service';
 import { IProduct } from 'src/app/models/products';
 import { faMinusCircle , faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { BasketService } from 'src/app/basket/basket.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,8 +14,9 @@ export class ProductDetailComponent implements OnInit {
   product : IProduct | undefined ;
   faMinusCircle = faMinusCircle;
   faPlusCircle = faPlusCircle;
-  constructor (private activatedRoute : ActivatedRoute,private shopSevice : ShopService){
-
+  quantity = 1;
+  constructor (private basketService : BasketService,private activatedRoute : ActivatedRoute,private shopSevice : ShopService){
+    
   }
   ngOnInit(): void {
     this.loadProduct();
@@ -33,5 +35,18 @@ export class ProductDetailComponent implements OnInit {
       }
     )
 
+  }
+  incrementQuantity(){
+    this.quantity++;
+  }
+  decrementQuantity(){
+    if(this.quantity > 1)
+    this.quantity--;
+  }
+  // tham chieu tu basketservice
+  addItemToBasket(){
+    if (this.product && this.quantity > 0){
+      this.basketService.addItemToBasket(this.product,this.quantity);
+    }
   }
 }

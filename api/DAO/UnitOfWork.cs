@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.DAO
 {
@@ -24,10 +25,19 @@ namespace api.DAO
             _db.Dispose();
         }
 
-        public void Save()
-        {
-            _db.SaveChanges();
-        }
+       public void Save()
+{
+    try
+    {
+        _db.SaveChanges();
+    }
+    catch (DbUpdateException ex)
+    {
+        // Log lỗi hoặc in ra console để xem thông điệp lỗi chi tiết.
+        Console.WriteLine(ex.InnerException.Message);
+        throw;
+    }
+}
 
         public GenericRepository<Product> ProductRepository 
         {

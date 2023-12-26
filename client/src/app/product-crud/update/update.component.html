@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" class="form form-control ">
+        <div>
+          <label  for="name">Name:</label>
+          <input class="form-control" type="text" id="name" formControlName="name" value="{{product?.name}}">
+        </div>
+        <div>
+          <label  for="description">Description:</label>
+          <textarea class="form-control" id="description" formControlName="description" value="{{product?.description}}"></textarea>
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input class="form-control" type="number" id="price" formControlName="price" value="{{product?.price}}">
+        </div>
+        <div>
+          <label  for="pictureUrl">Picture URL:</label>
+          <input class="form-control" type="file" id="pictureUrl" formControlName="pictureUrl">
+        </div>
+        <div>
+            <select class="form-select">
+      <option *ngFor="let type of typeList" [value]="type.id" >{{ type.name }}</option>
+    </select>
+
+        </div>
+        <div>
+            <select class="form-select">
+                <option *ngFor="let brand of brandList" [value]="brand.id">{{ brand.name }}</option>
+              </select>
+        </div>
+        <button class="btn btn-primary " type="submit">Update</button>
+      </form>
+</div>
